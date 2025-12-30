@@ -2,10 +2,16 @@ const mongoose = require("mongoose");
 const volumeSchema = new mongoose.Schema(
   {
     volNumber: Number,
-    chapters: {
-      type: Array,
-      default: [],
+    lightNovelId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Lightnovel",
     },
+    chapters: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Chapter",
+      },
+    ],
     finished: {
       type: Boolean,
       default: false,

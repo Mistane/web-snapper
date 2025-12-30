@@ -15,7 +15,8 @@ Voi mấy chương như là 1.1 hay 2.2 sẽ lấy số sau + số đầu = chư
 */
 
 //connecting to database
-const mongoUrl = "mongodb://localhost:27017/LnSnap";
+//mongodb://localhost:27017/LnSnap
+const mongoUrl = "mongodb://127.0.0.1:27017/screenshots";
 mongoose
   .connect(mongoUrl)
   .then(() => {
@@ -24,5 +25,6 @@ mongoose
   .catch((err) => {
     console.log("Ket noi that bai");
   });
+//----------------------
 
-system.getLn(website_url);
+system.getLn(website_url, "hello");

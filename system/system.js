@@ -1,14 +1,19 @@
 const cron = require("node-cron");
 const defaultConfig = require("./defaultConfig");
 const uploadScreenshots = require("./uploadScreenshots");
+const checkProgress = require("./checkProgress");
 
 /*
  /chuong/chuong-number
 document.querySelector(".chapter-title-banner").innerText.split(":")[0].split(" ")[1]
+
+lời bạt -> kết thúc volume
+chương tiếp -> kết thúc chương
 */
 let i = 0;
 
-module.exports.getLn = async (website_url) => {
+module.exports.getLn = async (website_url, lightnovelName) => {
+  let { lightnovel, volume, chapter } = await checkProgress(lightnovelName);
   let { worker, page, downloadPath } = await defaultConfig(
     website_url,
     "eng",
@@ -23,11 +28,17 @@ module.exports.getLn = async (website_url) => {
   }
   cron.schedule("1 * * * * *", async () => {
     console.log("Sau 1p anh se chay");
-    try {
-      uploadScreenshots(page, worker, downloadPath, i);
-    } catch {
-      console.log("lmao loi roi de lam lai");
+    let updatedChapter = await uploadScreenshots(
+      chapter,
+      page,
+      worker,
+      downloadPath,
+      i,
+    );
+    if (updatedChapter.finished) {
+      console.log("Het chuong roi gg");
     }
+    console.log(updatedChapter);
     i++;
   });
 };

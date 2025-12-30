@@ -2,10 +2,12 @@ const mongoose = require("mongoose");
 const lightnovelSchema = new mongoose.Schema(
   {
     title: String,
-    volumes: {
-      type: Array,
-      default: [],
-    },
+    volumes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Volume",
+      },
+    ],
     finished: {
       type: Boolean,
       default: false,
@@ -17,7 +19,7 @@ const lightnovelSchema = new mongoose.Schema(
 );
 
 const Lightnovel = mongoose.model(
-  "LightnovelSchema",
+  "Lightnovel",
   lightnovelSchema,
   "light-novels",
 );
