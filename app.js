@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const system = require("./system/system.js");
 const website_url =
-  "https://valvrareteam.net/truyen/nhung-moi-quan-he-bi-mat-dan-xuat-hien-khi-mot-otaku-huong-noi-nhu-toi-bi-bao-vay-boi-cac-mi-nhan-hang-s-c15cfc9d/chuong/chuong-1-doi-cho-doi-doi-ccdb037e";
+  "https://valvrareteam.net/truyen/nhung-moi-quan-he-bi-mat-dan-xuat-hien-khi-mot-otaku-huong-noi-nhu-toi-bi-bao-vay-boi-cac-mi-nhan-hang-s-c15cfc9d/chuong/loi-bat-809820cd";
 
 /*
  Đầu vào sẽ là tên website + chương đang ở, sau đó sẽ tự tạo thư mực con theo cấu trúc
@@ -27,4 +27,4 @@ mongoose
   });
 //----------------------
 
-system.getLn(website_url, "Doi cho ngoi gaming");
+system.getLn(website_url, "ahihi");

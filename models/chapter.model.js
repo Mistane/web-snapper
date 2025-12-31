@@ -3,9 +3,9 @@ const chapterSchema = new mongoose.Schema(
   {
     chapterNumber: Number,
     title: String,
+    url: String,
     images: [
       {
-        url: String,
         path: String,
       },
     ],

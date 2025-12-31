@@ -4,12 +4,12 @@ const Lightnovel = require("../models/lightnovel.model");
 const Volume = require("../models/volume.model");
 const Chapter = require("../models/chapter.model");
 
-module.exports = async (lightnovelName) => {
+module.exports = async (lightnovelName, baseURL) => {
   //Chua co hoac chua tao
   let ln = await Lightnovel.findOne({ title: lightnovelName });
   if (!ln) {
     console.log("Chua ton tai Lightnovel voi tieu de", lightnovelName);
-    ln = new Lightnovel({ title: lightnovelName });
+    ln = new Lightnovel({ title: lightnovelName, lightnovelBaseURL: baseURL });
     await ln.save();
     console.log("Cap nhat xong lightnovel");
   }

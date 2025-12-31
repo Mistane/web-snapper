@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const lightnovelSchema = new mongoose.Schema(
   {
     title: String,
+    lightnovelBaseURL: String,
     volumes: [
       {
         type: mongoose.Schema.Types.ObjectId,
