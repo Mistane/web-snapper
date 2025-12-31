@@ -5,6 +5,7 @@ const chapterSchema = new mongoose.Schema(
     title: String,
     images: [
       {
+        url: String,
         path: String,
       },
     ],

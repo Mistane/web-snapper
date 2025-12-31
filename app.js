@@ -27,4 +27,4 @@ mongoose
   });
 //----------------------
 
-system.getLn(website_url, "hello");
+system.getLn(website_url, "Doi cho ngoi gaming");

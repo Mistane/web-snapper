@@ -6,11 +6,6 @@ const Chapter = require("../models/chapter.model");
 
 module.exports = async (lightnovelName) => {
   //Chua co hoac chua tao
-  const lightnovelPath = path.resolve(`./screenshots/${lightnovelName}`);
-
-  if (!fs.existsSync(lightnovelPath)) {
-    fs.mkdirSync(lightnovelPath, { recursive: true });
-  }
   let ln = await Lightnovel.findOne({ title: lightnovelName });
   if (!ln) {
     console.log("Chua ton tai Lightnovel voi tieu de", lightnovelName);
@@ -61,10 +56,19 @@ module.exports = async (lightnovelName) => {
     );
     console.log("Cap nhat xong chapter");
   }
+  //Truong hop xong het thi tinh sau, gio den phan chup anh
+  const lightnovelPath = path.resolve(
+    `./screenshots/${lightnovelName}/volume-${volume.volNumber}/chapter-${chapter.chapterNumber}`,
+  );
+
+  if (!fs.existsSync(lightnovelPath)) {
+    fs.mkdirSync(lightnovelPath, { recursive: true });
+  }
 
   return {
     lightnovel: ln,
     volume: volume,
     chapter: chapter,
+    downloadPath: lightnovelPath,
   };
 };
